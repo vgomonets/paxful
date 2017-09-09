@@ -1,8 +1,8 @@
-var Client = require('node-rest-client').Client;
-var client = new Client();
-var CryptoJS = require("crypto-js");
-
-const queryString = require('query-string')
+const Client = require('node-rest-client').Client;
+const client = new Client();
+const API_CONFIG = require('./seller-config');
+const paxUtils = require('./utils');
+const queryString = require('query-string');
 
 client.get("https://paxful.com/buy-bitcoin/cash-deposit/USD?format=json", function (data) {
     console.log("cash-deposit:", data);
@@ -10,30 +10,12 @@ client.get("https://paxful.com/buy-bitcoin/cash-deposit/USD?format=json", functi
 
 
 client.post("https://paxful.com/api/payment-method/list", {
-    headers: {
-        "Content-Type": "text/plain",
-        "Accept": " application/json; verion=1"
-    }
-}, function (data) {
-    console.log("payment-method:", data);
-});
+    header: paxUtils.generateHeader()
+}, (data) => console.log("payment-method/list", data));
 
-const API_SECRET = 'EC5TAvsXSQyEtkj11N9r_afF-oXwGlPI';
-const API_KEY = 'mzqqFZyQA4CaEb1g-gNHIp5sObS55rsO';
-
-var payload = {
-    apikey: API_KEY,
-    nonce: new Date()
-};
-
-payload['apiseal'] = CryptoJS.HmacSHA256(queryString.stringify(payload), API_SECRET);
-
-client.post("https://paxful.com/api/wallet/balance", {
-    headers: {
-        "Content-Type": "text/plain",
-        "Accept": " application/json; version=1"
+client.post(`${API_CONFIG.PAX_API_URL}/wallet/balance`, {
+        header: paxUtils.generateHeader(),
+        data: queryString.stringify(paxUtils.createPayload())
     },
-    data: queryString.stringify(payload)
-}, function (data) {
-    console.log("wallet/balance", data);
-});
+    (data) => console.log("wallet/balance", data)
+);
