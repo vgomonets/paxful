@@ -4,7 +4,6 @@ var CryptoJS = require("crypto-js");
 
 const queryString = require('query-string')
 
-
 client.get("https://paxful.com/buy-bitcoin/cash-deposit/USD?format=json", function (data) {
     console.log("cash-deposit:", data);
 });
