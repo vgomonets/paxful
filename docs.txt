@@ -1,0 +1,9 @@
+Google:
+1. Test Buyer, test.buyer.paxful@gmail.com, wb14ikwiktor.
+2. Test Seller, test.seller.paxful@gmail.com, wb14ikwiktor.
+
+Paxful:
+1. testbuyer, test.buyer.paxful@gmail.com, wb14ikwiktor.
+2. testseller, test.seller.paxful@gmail.com, wb14ikwiktor,
+API_SECRET = 'EC5TAvsXSQyEtkj11N9r_afF-oXwGlPI',
+API_KEY = 'mzqqFZyQA4CaEb1g-gNHIp5sObS55rsO'.
