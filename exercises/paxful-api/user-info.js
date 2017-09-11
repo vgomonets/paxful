@@ -5,19 +5,12 @@ const paxUtils = require('./utils');
 const queryString = require('query-string');
 
 const params =  {
-    offer_type_field: 'sell',
-    currency: 'USD',
-    payment_method: 'any-creditdebit-card',
-    margin: 0,
-    range_min: 1,
-    range_max: 5,
-    payment_window: 50,
-    offer_terms: 'test',
+    username: 'testseller'
 };
 
-client.post(`${API_CONFIG.PAX_API_URL}/offer/create`, {
+client.post(`${API_CONFIG.PAX_API_URL}/user/info`, {
         header: paxUtils.generateHeader(),
         data: queryString.stringify(paxUtils.createPayload(params))
     },
-    (data) => console.log("offer/create", data)
+    (data) => console.log("user/info", data)
 );

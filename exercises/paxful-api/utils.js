@@ -10,7 +10,7 @@ exports.createPayload = (params = {}) => {
 };
 
 exports.setAdPrice = (params = {
-    offer_hash: '2zE1NQbZAmb',
+    offer_hash: 'AgqeBpZnnmX',
     margin: 100 + Math.random()*10
 }) => {
     params['apikey'] = API_CONFIG.API_KEY;
