@@ -9,16 +9,6 @@ exports.createPayload = (params = {}) => {
     return params;
 };
 
-exports.setAdPrice = (params = {
-    offer_hash: 'AgqeBpZnnmX',
-    margin: 100 + Math.random()*10
-}) => {
-    params['apikey'] = API_CONFIG.API_KEY;
-    params['nonce'] = new Date();
-    params['apiseal'] = CryptoJS.HmacSHA256(queryString.stringify(params), API_CONFIG.API_SECRET);
-    return params;
-};
-
 exports.generateHeader = () => {
     return {
         "Content-Type": "text/plain",
