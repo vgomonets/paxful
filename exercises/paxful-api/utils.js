@@ -11,7 +11,8 @@ exports.createPayload = (params = {}) => {
 
 exports.setAdPrice = (params = {
     offer_hash: '2zE1NQbZAmb',
-    margin: '10010'}) => {
+    margin: '100' + Math.random()*10
+}) => {
     params['apikey'] = API_CONFIG.API_KEY;
     params['nonce'] = new Date();
     params['apiseal'] = CryptoJS.HmacSHA256(queryString.stringify(params), API_CONFIG.API_SECRET);
