@@ -8,10 +8,10 @@ const params =  {
     offer_type_field: 'sell',
     currency: 'USD',
     payment_method: 'bankwest-cash-deposit',
-    margin: '100',
-    range_min: '1',
-    range_max: '1',
-    payment_window: '50',
+    margin: 100,
+    range_min: 1,
+    range_max: 1,
+    payment_window: 50,
     offer_terms: 'test',
 };
 
