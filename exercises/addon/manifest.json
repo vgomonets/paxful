@@ -16,7 +16,7 @@
         "js": ["content-script.js"]
       },
       {
-        "matches": ["*://*.example.org/*"],
+        "matches": ["*://*.paxful.com/*"],
         "js": ["jquery.js", "grabber-script.js"]
       }
     ]
