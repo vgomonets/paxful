@@ -40,8 +40,10 @@ app.get('/', function (req, res, next) {
         <script type="text/javascript" src="client.js"></script>
     </head>
     <body>
-    <input class="margin" type="text" value="">
+    <form action="${API_CONFIG.PAX_API_URL}/offer/update" method="post">
+    <input type="text" value="">
     <input type="submit" value="Submit">
+    </form>
     </body>
     </html>`);
 });
