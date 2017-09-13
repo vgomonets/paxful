@@ -4,7 +4,7 @@ browser.runtime.onMessage.addListener(function (event) {
       switch (event.command) {
         case 'openTab':
             browser.tabs.create({
-                url:"https://paxful.com/offer-manager/edit/AgqeBpZnnmX"
+              url:"https://paxful.com/en/login"
             });
           break;
         case 'send-data':
