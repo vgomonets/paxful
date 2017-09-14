@@ -2,7 +2,7 @@ browser.runtime.onMessage.addListener(function (event) {
     console.log("background, got message", event);
     if (event.direction === 'dispatcher') {
       switch (event.command) {
-        case 'openTab':
+        case 'modify-price':
             browser.tabs.create({
               url:"https://paxful.com/login"
             });

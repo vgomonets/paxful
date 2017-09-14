@@ -1,0 +1,3 @@
+node_modules/
+addon/*.js
+!addon/jquery.js
