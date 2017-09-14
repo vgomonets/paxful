@@ -51,7 +51,6 @@ class App extends Component {
         return (
             <MuiThemeProvider>
                 <div>
-                    <TextField hintText="AD Hash" ref={(el) => this.input = el} defaultValue={'AgqeBpZnnmX'}/>
                     <RaisedButton ref={(el) => this.button = el} disabled={!this.state.isWSReady}
                                   label={!this.state.isPooling ? "Start Price Modifications" : "Stop Price Modifications"}
                                   onClick={this.onClick}/>

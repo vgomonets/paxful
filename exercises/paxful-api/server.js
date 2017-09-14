@@ -19,12 +19,23 @@ wss.on('connection', (ws) => {
                 ws.send(JSON.stringify({
                         direction: 'dispatcher',
                         command: 'modify-price',
-                        value: 100 + Math.random() * 10
+                        value: {
+                            price: 100 + Math.random() * 10,
+                            hash: 'AgqeBpZnnmX'
+                        }
                     }
                 ));
                 break;
             case 'price-is-modified':
-                ws.send(JSON.stringify({command: 'modify-price', value: 100 + Math.random() * 10}));
+                ws.send(JSON.stringify({
+                        direction: 'dispatcher',
+                        command: 'modify-price',
+                        value: {
+                            price: 100 + Math.random() * 10,
+                            hash: 'AgqeBpZnnmX'
+                        }
+                    }
+                ));
                 break;
         }
     });
