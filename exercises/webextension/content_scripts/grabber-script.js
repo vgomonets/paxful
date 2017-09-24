@@ -20,11 +20,8 @@ browser.runtime.onMessage.addListener((event) => {
         case 'check-status' :
             $(() => {
                 const message = $('.style-msg.successmsg');
-                alert(message.html());
-                alert(event.value);
                 const html = message.html();
                 if (html && html.indexOf(event.value) !== -1) {
-                    alert("update-succeed");
                     browser.runtime.sendMessage({
                         direction: 'dispatcher',
                         command: 'update-succeed',

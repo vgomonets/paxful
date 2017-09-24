@@ -15,13 +15,14 @@ const modifyPrice = async (data) => {
 };
 
 const notifyMainPage = async (data) => {
-    await browser.tabs.remove(data.tabId);
-    let tabs = await browser.tabs.query({url: 'localhost:8888'});
+    let tabs = await browser.tabs.query();
     Array.from(tabs, tab => browser.tabs.sendMessage(tab.id, {
             direction: "server",
-            command: 'price-is-modified'
+            command: 'price-is-modified',
+            value: data.value
         }
     ));
+    await browser.tabs.remove(data.tabId);
 };
 
 const wait = (data) => {
@@ -32,7 +33,7 @@ const wait = (data) => {
                 value: data.value
             }
         )
-    }, 5000);
+    }, 10000);
 };
 
 browser.runtime.onMessage.addListener((event) => {
