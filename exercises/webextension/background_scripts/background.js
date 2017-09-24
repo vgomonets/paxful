@@ -1,13 +1,17 @@
+import 'babel-polyfill';
+import 'webextension-polyfill';
+
 const modifyPrice = async (data) => {
     let tab = await browser.tabs.create({
         url: `https://paxful.com/offer-manager/edit/${data.value.hash}`
     });
-    browser.tabs.sendMessage(tab.id, {
+    setTimeout(() => browser.tabs.sendMessage(tab.id, {
             command: 'modify-price',
-            value: event.value,
+            value: data.value,
             tabId: tab.id
         }
-    )
+    ), 5000);
+
 };
 
 const notifyMainPage = async (data) => {
@@ -28,7 +32,7 @@ const wait = (data) => {
                 value: data.value
             }
         )
-    }, 1000);
+    }, 5000);
 };
 
 browser.runtime.onMessage.addListener((event) => {
@@ -40,7 +44,7 @@ browser.runtime.onMessage.addListener((event) => {
                 modifyPrice(event);
                 break;
             case 'wait-for-success':
-                wait('event');
+                wait(event);
                 break;
             case 'update-succeed':
                 // noinspection JSIgnoredPromiseFromCall

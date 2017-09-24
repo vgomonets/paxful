@@ -27,7 +27,8 @@ wss.on('connection', (ws) => {
                 ));
                 break;
             case 'price-is-modified':
-                ws.send(JSON.stringify({
+                //set timeout for the add in 2 mins (paxfull limits)
+                setTimeout(() => ws.send(JSON.stringify({
                         direction: 'dispatcher',
                         command: 'modify-price',
                         value: {
@@ -35,7 +36,8 @@ wss.on('connection', (ws) => {
                             hash: 'AgqeBpZnnmX'
                         }
                     }
-                ));
+                )), 1000 * 60 * 2);
+
                 break;
         }
     });
