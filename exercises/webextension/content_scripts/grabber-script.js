@@ -29,7 +29,6 @@ browser.runtime.onMessage.addListener((event) => {
                         value: event.value
                     });
                 } else {
-                    alert("wait-for-success");
                     browser.runtime.sendMessage({
                         direction: 'dispatcher',
                         command: 'wait-for-success',
