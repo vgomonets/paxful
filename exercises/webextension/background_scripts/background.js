@@ -15,25 +15,14 @@ const modifyPrice = async (data) => {
 };
 
 const notifyMainPage = async (data) => {
-    let tabs = await browser.tabs.query();
+    await browser.tabs.remove(data.tabId);
+    let tabs = await browser.tabs.query({});
     Array.from(tabs, tab => browser.tabs.sendMessage(tab.id, {
             direction: "server",
             command: 'price-is-modified',
             value: data.value
         }
     ));
-    await browser.tabs.remove(data.tabId);
-};
-
-const wait = (data) => {
-    setTimeout(() => {
-        browser.tabs.sendMessage(data.tabId, {
-                command: 'check-status',
-                tabId: data.tabId,
-                value: data.value
-            }
-        )
-    }, 10000);
 };
 
 browser.runtime.onMessage.addListener((event) => {
@@ -43,9 +32,6 @@ browser.runtime.onMessage.addListener((event) => {
             case 'modify-price':
                 // noinspection JSIgnoredPromiseFromCall
                 modifyPrice(event);
-                break;
-            case 'wait-for-success':
-                wait(event);
                 break;
             case 'update-succeed':
                 // noinspection JSIgnoredPromiseFromCall
