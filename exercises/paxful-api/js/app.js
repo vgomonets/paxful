@@ -41,9 +41,9 @@ class App extends Component {
     }
 
     onWindowMessage(event) {
-        console.log("client, got message", event);
+        console.log("client, got message", event.data);
         if (event.data.direction === 'server') {
-            this.socket.send(event.data.value);
+            this.socket.send(JSON.stringify(event.data));
         }
     }
 

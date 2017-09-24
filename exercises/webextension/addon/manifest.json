@@ -7,17 +7,15 @@
   },
   "background": {
     "scripts": [
-      "browser-polyfill.js",
       "background.js"
     ]
   },
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "*://localhost/*"
       ],
       "js": [
-        "browser-polyfill.js",
         "content-script.js"
       ]
     },
@@ -26,8 +24,7 @@
         "*://*.paxful.com/*"
       ],
       "js": [
-        "browser-polyfill.js",
-        "jquery.js",
+        "content-script.js",
         "grabber-script.js"
       ]
     }

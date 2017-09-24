@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+import 'webextension-polyfill';
 import $ from 'jquery';
 
 browser.runtime.onMessage.addListener((event) => {
@@ -6,28 +8,13 @@ browser.runtime.onMessage.addListener((event) => {
         case 'modify-price':
             $(() => {
                 $("#margin").val(event.value.price);
-                $('#save-btn').submit();
+                $('#save-btn').click();
                 browser.runtime.sendMessage({
-                    command: 'wait-for-success',
+                    direction: 'dispatcher',
+                    command: 'update-succeed',
                     tabId: event.tabId,
-                    value: event.value.hash
+                    value: event.value
                 });
-            });
-            break;
-        case 'check-status' :
-            $(() => {
-                const message = $('.style-msg.successmsg');
-                if (message.length && message.html().indexOf(event.value) !== -1) {
-                    browser.runtime.sendMessage({
-                        command: 'update-succeed'
-                    });
-                } else {
-                    browser.runtime.sendMessage({
-                        command: 'wait-for-success',
-                        tabId: event.tabId,
-                        value: event.value
-                    });
-                }
             });
             break;
     }
