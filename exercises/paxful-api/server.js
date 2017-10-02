@@ -21,7 +21,7 @@ wss.on('connection', (ws) => {
                         command: 'modify-price',
                         value: {
                             price: 100 + Math.random() * 10,
-                            hash: 'AgqeBpZnnmX'
+                            hash: 'wjWmDWN8Po5'
                         }
                     }
                 ));
@@ -33,7 +33,7 @@ wss.on('connection', (ws) => {
                         command: 'modify-price',
                         value: {
                             price: 100 + Math.random() * 10,
-                            hash: 'AgqeBpZnnmX'
+                            hash: 'wjWmDWN8Po5'
                         }
                     }
                 )), 1000 * 60 * 2);

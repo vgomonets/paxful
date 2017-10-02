@@ -15,4 +15,4 @@ const setAdPrice = (offer_hash, margin) => {
 }
 
 //test function
-setAdPrice('AgqeBpZnnmX', 100 + Math.random()*10);
+setAdPrice('wjWmDWN8Po5', 100 + Math.random()*10);
